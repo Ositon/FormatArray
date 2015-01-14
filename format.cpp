@@ -37,13 +37,11 @@ int main()
 	}
   }
   newLine += " ]" ;
-  cout << newLine << endl ;
   read.close() ; //close filestream
-  cout << "Iterations: " << i << endl ;
-/*  cout << "Please type the name of the file to be created:" << endl ;
-  cin >> newFileName ;
-  getline( std::cin , newFileName ) ;
-  ofstream writer( newFileName ) ; // open filestream to write to new file name array.txt */
+
+  cout << "Please type the name of the file to be created:" << endl ;
+  getline( cin , newFileName ) ;
+  ofstream writer( newFileName.c_str() ) ; // open filestream to write to new file name array.txt 
   
   if ( ! writer ) 
   {

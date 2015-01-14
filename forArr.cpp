@@ -6,6 +6,6 @@ int main()
   char input ;
   cin >> input ;
   int asci = input ;
-  cout << input ;
+  cout << "Key " << input << " is " << asci ;
   return 0 ;
 }

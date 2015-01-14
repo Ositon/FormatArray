@@ -5,8 +5,11 @@ using namespace std ;
 
 int main()
 {
-  string line ; int i ; string newLine = "[ " ; string newFileName ;
-  ifstream read( "list.txt" ) ; // create input filestream object to read txt file.
+  string line ; int i ; string newLine = "[ " ; string newFileName ; string readFile ;
+  cout << "Please type the name of which file you wish to read:" << endl ; // ask file to open
+  getline( cin , readFile ) ;
+  readFile += ".txt" ;
+  ifstream read( readFile.c_str() ) ; // create input filestream object to read txt file.
   
   if ( ! read )	// throw exception if unable to read file
   {
@@ -23,7 +26,7 @@ int main()
   newLine += " ]" ;
   read.close() ; //close filestream
 
-  cout << "Please type the name of the file to be created:" << endl ;
+  cout << "Please type the name of the file to be created:" << endl ; // ask file name to create
   getline( cin , newFileName ) ;
   newFileName += ".txt" ;
   ofstream writer( newFileName.c_str() ) ; // open filestream to write to new file name array.txt 

@@ -5,7 +5,7 @@ using namespace std ;
 
 int main()
 {
-  string line ; int i ; string newLine = "[ " ; int max ; string newFileName ;
+  string line ; int i ; string newLine = "[ " ; string newFileName ;
   ifstream read( "list.txt" ) ; // create input filestream object to read txt file.
   
   if ( ! read )	// throw exception if unable to read file
@@ -13,37 +13,22 @@ int main()
     cout << "Error Opening Input File" << endl ;	// error message
 	return -1 ;
   }
-  
-  for ( i = 0 ; ! read.eof() ; i++)
-  {
-    getline( read , line ) ;
-  }
-  
-  max = i ; // max = total numebr of lines on txt file
-  cout << max << endl ;
-  read.close() ; read.open( "list.txt" ) ;  // closes filestream and then reopens same file
-  
+
+  getline( read , line ) ; newLine += "'" + line + "'" ; // first line doesn't have comma prepend
   for ( i = 0 ; ! read.eof() ; i++ ) // .eof() function check to see if end of file.  Does loop while it is not the end of file.
   {
-    if ( i < ( max - 1 ) ) // if not last line append ' ,  at end, if last line append ' instead.  Max -1 to account for i starting at 0 
-	{
-	  getline( read , line ) ;
-	  newLine += "'" + line + "' , " ;  // appends lines from getline to newLine string
-	}
-	else
-	{
-	  getline( read , line ) ;
-	  newLine += "'" + line + "'" ;
-	}
+    getline( read , line ) ;
+    newLine += " , '" + line + "'" ;  // appends lines from getline to newLine string
   }
   newLine += " ]" ;
   read.close() ; //close filestream
 
   cout << "Please type the name of the file to be created:" << endl ;
   getline( cin , newFileName ) ;
+  newFileName += ".txt" ;
   ofstream writer( newFileName.c_str() ) ; // open filestream to write to new file name array.txt 
   
-  if ( ! writer ) 
+  if ( ! writer ) // throw exception if unable to write file
   {
     cout << "Error Opening File for Output" << endl ;
 	return -1 ;

@@ -1,3 +1,10 @@
+/*
+	Things to do:
+  1). Add in the ability to open files in different directories
+  2). Check over code to see if it can be stated more elegantly
+  3). Check if file is already formatted
+*/
+  
 #include <iostream>
 #include <fstream>
 #include <string>
